@@ -16,7 +16,7 @@
     <title>QuickChat</title>
   </head>
   <body>
-
+    <!-- header -->
     {% include 'snippet/navbar.html'%}
     <!-- {% if messages %}
     <ul class="messages">
@@ -25,12 +25,13 @@
       {% endfor %}
     </ul>
     {% endif %} -->
+    <!-- body -->
     <div class="main">
         {% block content %}
 
         {% endblock %}
     </div>
-
+    <!-- footer -->
     {% include 'snippet/footer.html' %}
     
     <!-- Optional JavaScript; choose one of the two! -->
