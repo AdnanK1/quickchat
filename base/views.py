@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
 from .email import send_welcome_email
+from .models import Client,Business
 
 # Create your views here.
 @login_required(login_url='login')
