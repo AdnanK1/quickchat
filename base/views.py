@@ -46,7 +46,7 @@ def registerPage(request):
             user = form.save()
             login(request,user,backend = 'django.contrib.auth.backends.ModelBackend')
             
-            return redirect('home')
+            return redirect('setup')
         else:
             messages.error(request,'An error has occurred when Logging, please use a stronger password')
     context = {'form':form}
