@@ -67,5 +67,6 @@ def setup(request):
             post.user = request.user
             post.email = request.user.email
             post.save()
+            return redirect('home')
     context = {'form':form}
     return render(request,'setup.html',context)
