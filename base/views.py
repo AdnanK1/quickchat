@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 
 # Create your views here.
+@login_required(login_url='login')
 def home(request):
     context = {}
     return render(request,'home.html',context)
