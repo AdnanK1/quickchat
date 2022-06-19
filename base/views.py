@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import CreateUserForm
+from .forms import CreateUserForm,SetUpForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -59,5 +59,13 @@ def logoutUser(request):
 
 @login_required(login_url='login')
 def setup(request):
-    context = {}
+    form = SetUpForm()
+    if request.method == 'POST':
+        form = SetUpForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.email = request.user.email
+            post.save()
+    context = {'form':form}
     return render(request,'setup.html',context)
