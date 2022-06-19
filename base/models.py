@@ -21,6 +21,15 @@ class Client(models.Model):
     def __str__(self):
         return str(self.user)
 
+class Post(models.Model):
+    author = models.ForeignKey(Client,on_delete=models.SET_NULL, null=True)
+    body = models.TextField(max_length=120)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.author)
+
+
 class Business(models.Model):
     name = models.CharField(max_length=90)
     client = models.ForeignKey(Client,on_delete=models.SET_NULL, null=True)
