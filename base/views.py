@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
+from .email import send_welcome_email
 
 # Create your views here.
 @login_required(login_url='login')
@@ -41,6 +42,7 @@ def registerPage(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
+            send_welcome_email(username,email)
             user = form.save()
             login(request,user,backend = 'django.contrib.auth.backends.ModelBackend')
             
