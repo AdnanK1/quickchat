@@ -71,3 +71,8 @@ def setup(request):
             return redirect('home')
     context = {'form':form}
     return render(request,'setup.html',context)
+
+@login_required(login_url='login')
+def post(request):
+    context = {}
+    return render(request,'post.html',context)
