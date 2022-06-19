@@ -23,7 +23,7 @@ class Client(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(Client,on_delete=models.SET_NULL, null=True)
-    body = models.TextField(max_length=120)
+    body = models.CharField(max_length=400)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

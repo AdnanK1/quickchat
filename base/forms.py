@@ -19,3 +19,4 @@ class PostForm(ModelForm):
     class Meta:
         model = models.Post
         fields = '__all__'
+        exclude = ['author']
