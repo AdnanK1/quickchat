@@ -51,3 +51,8 @@ def registerPage(request):
             messages.error(request,'An error has occurred when Logging, please use a stronger password')
     context = {'form':form}
     return render(request,'auth/register.html',context)
+
+@login_required(login_url='login')
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
