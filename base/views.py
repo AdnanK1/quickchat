@@ -56,3 +56,8 @@ def registerPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+@login_required(login_url='login')
+def setup(request):
+    context = {}
+    return render(request,'setup.html',context)
