@@ -1,0 +1,3 @@
+Hello {{username}}
+
+Welcome to QuickChat where you can keep an update with your surrounding
