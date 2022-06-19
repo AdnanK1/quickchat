@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'base',
-    # 'channels',
     'fontawesomefree',
     'cloudinary',
 ]
@@ -112,15 +111,6 @@ DATABASES['default'].update(db_from_env)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-CHANNEL_LAYERS = {
-    'default':{
-        'BACKEND':'channels_redis.core.RedisChannelLayer',
-        'CONFIG':{
-            'hosts':[('127.0.0.1', 6379)]
-        }
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -184,8 +174,6 @@ cloudinary.config(
   api_key = "513198623125999", 
   api_secret = "Tf0rQQraj8Qj7r-clhX2l7D4qTk"
 )
-
-
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())

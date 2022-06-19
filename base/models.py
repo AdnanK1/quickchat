@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class NeighbourHood(models.Model):
@@ -11,6 +12,7 @@ class NeighbourHood(models.Model):
         return str(self.name)
 
 class Client(models.Model):
+    profile = CloudinaryField('image',null=True)
     user = models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     email = models.EmailField()
     neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.SET_NULL, null=True)
