@@ -12,9 +12,15 @@
             <p>Location: {{profile.neighbourhood}}</p>
             <p>National ID: {{profile.national_id}}</p>
             <br>
-            <a href="" class="btn btn-outline-dark">Update Profile</a>
+            <a href="{% url 'update' %}" class="btn btn-outline-dark">Update</a>
         </div>
     </div>
+    <!-- Update form -->
+    <form action="{% url 'update' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit" class="btn btn-outline-dark">Update Profile</button>
+    </form>
 </div>
 {% endif %}
 {% endblock %}

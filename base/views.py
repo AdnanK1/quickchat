@@ -1,6 +1,6 @@
 from multiprocessing import context
 from django.shortcuts import render,redirect
-from .forms import CreateUserForm,SetUpForm,PostForm
+from .forms import CreateUserForm,SetUpForm,PostForm,UserUpdateform
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -112,5 +112,13 @@ def business(request):
 @login_required(login_url='login')
 def updateProfile(request):
     profile = request.user.profile
-    context = {'profile':profile}
+    form = UserUpdateform(instance=profile)
+    if request.method == 'POST':
+        form = UserUpdateform(request.POST,request.FILES,instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request,f'Your account has been updated')
+            return redirect('profile')
+    
+    context = {'profile':profile,'form':form}
     return render(request,'profile.html',context)

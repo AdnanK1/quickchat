@@ -20,3 +20,9 @@ class PostForm(ModelForm):
         model = models.Post
         fields = '__all__'
         exclude = ['author']
+
+class UserUpdateform(ModelForm):
+    class Meta:
+        model = models.Client
+        fields = '__all__'
+        exclude = ['user','email','national_id']
