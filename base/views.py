@@ -100,7 +100,8 @@ class postList(LoginRequiredMixin,CreateView):
 
 @login_required(login_url='login')
 def profilePage(request):
-    context = {}
+    profile = request.user.profile
+    context = {'profile':profile}
     return render(request,'profile.html',context)
 
 @login_required(login_url='login')

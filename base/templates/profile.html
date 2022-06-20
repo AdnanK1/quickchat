@@ -1,4 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Profile</h1>
+{% if profile %}
+
+<div class="container">
+    <h1>Profile Page</h1>
+    <div class="card">
+        <img src="{{profile.profile.url}}" class="rounded float-start" alt="image" width="250px" height="250px">
+        <div class="info">
+            <h1>{{profile.user}}</h1>
+            <p>Email:{{profile.email}}</p>
+            <p>Location: {{profile.neighbourhood}}</p>
+            <p>National ID: {{profile.national_id}}</p>
+            <br>
+            <a href="" class="btn btn-outline-dark">Update Profile</a>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
