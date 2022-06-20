@@ -26,3 +26,9 @@ class UserUpdateform(ModelForm):
         model = models.Client
         fields = '__all__'
         exclude = ['user','email','national_id']
+
+class BusinessEntryForm(ModelForm):
+    class Meta:
+        model = models.Business
+        fields = '__all__'
+        exclude = ['client','neighbourhood']

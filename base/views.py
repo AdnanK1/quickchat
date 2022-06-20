@@ -107,7 +107,7 @@ def profilePage(request):
 @login_required(login_url='login')
 def business(request):
     context = {}
-    return render(request,'profile.html',context)
+    return render(request,'business.html',context)
 
 @login_required(login_url='login')
 def updateProfile(request):
