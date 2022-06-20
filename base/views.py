@@ -108,3 +108,9 @@ def profilePage(request):
 def business(request):
     context = {}
     return render(request,'profile.html',context)
+
+@login_required(login_url='login')
+def updateProfile(request):
+    profile = request.user.profile
+    context = {'profile':profile}
+    return render(request,'profile.html',context)
