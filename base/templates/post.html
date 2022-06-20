@@ -1,27 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<h1>Post</h1>
-<form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" class="btn btn-primary">Post</button>
-</form>
-<div class="container">
-  <div class="card text-center">
-    {% for post in post %}
+<div class="home-container">
+  <div class="container">
+    <h1>Post</h1>
+    <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.body}}
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </div>
+  
+  <div class="container">
     <br>
-    <div class="card-header">
-      <img class="account-image rounded-circle" src="{{post.author.profile.url}}" alt="image" width="40" height="40"><strong>{{post.author}}</strong>
+    {% for post in post %}
+    <div class="card">
+      <div class="card-body">
+        <img class="account-image rounded-circle" src="{{post.author.profile.url}}" alt="image" width="40" height="40"> <strong>{{post.author}}</strong>
+        <p class="card-text text-center">{{post.body}}</p>
+        <p class="card-text text-center"><small>{{post.created}}</small></p>
+      </div>
     </div>
-    <div class="card-body">
-      <p class="card-text">{{post.body}}</p>
-    </div>
-    <div class="card-footer text-muted">
-      {{post.created}}
-    </div>
-    {% endfor %}
-</div>
+  {% endfor %}
+  </div>
 </div>
 
 
