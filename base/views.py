@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render,redirect
 from .forms import CreateUserForm,SetUpForm,PostForm
 from django.contrib import messages
@@ -96,3 +97,13 @@ class postList(LoginRequiredMixin,CreateView):
         
         context = {'post':post,'form':form}
         return render(request,'post.html',context)
+
+@login_required(login_url='login')
+def profilePage(request):
+    context = {}
+    return render(request,'profile.html',context)
+
+@login_required(login_url='login')
+def business(request):
+    context = {}
+    return render(request,'profile.html',context)

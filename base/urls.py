@@ -9,4 +9,6 @@ urlpatterns = [
 
     path('',views.home,name='home'),
     path('post',views.postList.as_view(),name='post'),
+    path('profile',views.profilePage,name='profile'),
+    path('add-business',views.business,name='business'),
 ]
