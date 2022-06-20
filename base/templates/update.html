@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 <!-- Update form -->
-<form action="{% url 'update' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit" class="btn btn-outline-dark">Update Profile</button>
-</form>
+<div class="container">
+    <h1>Update Profile</h1>
+    <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <form action="{% url 'update' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form|crispy}}
+                
+
+                <div class="d-grip gap-2">
+                    <button type="submit" class="btn btn-outline-dark">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

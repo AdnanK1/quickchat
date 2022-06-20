@@ -51,7 +51,7 @@ def registerPage(request):
             send_welcome_email(username,email)
             user = form.save()
             login(request,user,backend = 'django.contrib.auth.backends.ModelBackend')
-            
+            messages.success(request,f'Hello {username} you have been logged and a welcome email has been sent')
             return redirect('setup')
         else:
             messages.error(request,'An error has occurred when Logging, please use a stronger password')
