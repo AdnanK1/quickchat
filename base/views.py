@@ -13,7 +13,12 @@ from django.views.generic.edit  import CreateView
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
-    business = Business.objects.all()
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    business = Business.objects.filter(
+        Q(name__icontains=q) |
+        Q(email__icontains=q)
+    )
+
     hood = NeighbourHood.objects.all()
 
 
