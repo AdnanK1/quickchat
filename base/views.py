@@ -1,14 +1,14 @@
 from multiprocessing import context
 from django.shortcuts import render,redirect
-from .forms import CreateUserForm,SetUpForm,PostForm,UserUpdateform
+from .forms import CreateUserForm,SetUpForm,PostForm,UserUpdateform,BusinessEntryForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
 from .email import send_welcome_email
-from .models import Client,Business,Post
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from .models import Business,Post
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit  import CreateView
 
 # Create your views here.
@@ -16,7 +16,7 @@ from django.views.generic.edit  import CreateView
 def home(request):
     business = Business.objects.all()
 
-    context = {}
+    context = {'business':business}
     return render(request,'home.html',context)
 
 def loginPage(request):
@@ -106,7 +106,18 @@ def profilePage(request):
 
 @login_required(login_url='login')
 def business(request):
-    context = {}
+    form = BusinessEntryForm()
+    if request.method == 'POST':
+        form = BusinessEntryForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.client = request.user.profile
+            post.neighbourhood = request.user.profile.neighbourhood
+            post.save()
+            messages.success(request,f'The business has been posted successfully')
+            return redirect('home')
+
+    context = {'form':form}
     return render(request,'business.html',context)
 
 @login_required(login_url='login')

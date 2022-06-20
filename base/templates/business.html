@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Business Form</h1>
+<div class="container">
+    <h1>Business Form</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-outline-dark">Post</button>
+    </form>
+</div>
+
 {% endblock %}
