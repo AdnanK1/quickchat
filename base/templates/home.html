@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Hi</h1>
+
+    <div class="container">
+        <h1>Business Available</h1>
+        {% for business in business%}
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <div class="card-body">
+                <p class='card-text'>{{business.name}} -- {{business.client}}</p>
+                <p class="card-text">{{business.email}}</p>
+                <p class="card-text">{{business.neighbourhood}}</p>
+                <p class="card-text"><small>{{business.created}}</small></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+
 {% endblock %}

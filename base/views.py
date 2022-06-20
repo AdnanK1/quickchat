@@ -1,4 +1,3 @@
-from multiprocessing import context
 from django.shortcuts import render,redirect
 from .forms import CreateUserForm,SetUpForm,PostForm,UserUpdateform,BusinessEntryForm
 from django.contrib import messages
@@ -7,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
 from .email import send_welcome_email
-from .models import Business,Post
+from .models import Business,Post,NeighbourHood
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit  import CreateView
 
@@ -15,8 +14,10 @@ from django.views.generic.edit  import CreateView
 @login_required(login_url='login')
 def home(request):
     business = Business.objects.all()
+    hood = NeighbourHood.objects.all()
 
-    context = {'business':business}
+
+    context = {'business':business,'hood':hood}
     return render(request,'home.html',context)
 
 def loginPage(request):
