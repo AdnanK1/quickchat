@@ -13,7 +13,7 @@ class NeighbourHood(models.Model):
 
 class Client(models.Model):
     profile = CloudinaryField('image',null=True)
-    user = models.OneToOneField(User,null=True,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,null=True,on_delete=models.CASCADE,related_name='profile')
     email = models.EmailField()
     neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.SET_NULL, null=True)
     national_id = models.IntegerField()
@@ -28,6 +28,9 @@ class Post(models.Model):
 
     def __str__(self):
         return str(self.author)
+
+    class Meta:
+        ordering = ['-created']
 
 
 class Business(models.Model):

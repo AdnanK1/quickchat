@@ -6,11 +6,15 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
 from .email import send_welcome_email
-from .models import Client,Business
+from .models import Client,Business,Post
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic.edit  import CreateView
 
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
+    business = Business.objects.all()
+
     context = {}
     return render(request,'home.html',context)
 
@@ -72,14 +76,23 @@ def setup(request):
     context = {'form':form}
     return render(request,'auth/setup.html',context)
 
-@login_required(login_url='login')
-def post(request):
-    form = PostForm()
-    if request.method == 'POST':
+class postList(LoginRequiredMixin,CreateView):
+    def get(self,request,*args,**kwargs):
+        post = Post.objects.all()
+        form = PostForm()
+        context = {'post':post,'form':form}
+
+        return render(request,'post.html',context)
+
+    def post(self,request,*args,**kwargs):
+        post = Post.objects.all()
         form = PostForm(request.POST)
-        if form.is_valid:
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-    context = {'form':form}
-    return render(request,'post.html',context)
+
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.author = self.request.user.profile
+            new_post.save()
+            return redirect('post')
+        
+        context = {'post':post,'form':form}
+        return render(request,'post.html',context)

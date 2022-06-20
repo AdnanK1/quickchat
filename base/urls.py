@@ -8,5 +8,5 @@ urlpatterns = [
     path('setup',views.setup,name='setup'),
 
     path('',views.home,name='home'),
-    path('post',views.post,name='post'),
+    path('post',views.postList.as_view(),name='post'),
 ]

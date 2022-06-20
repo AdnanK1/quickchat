@@ -1,9 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <h1>Post</h1>
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Post" />
+    <button type="submit" class="btn btn-primary">Post</button>
 </form>
+<div class="container">
+  <div class="card text-center">
+    {% for post in post %}
+    <br>
+    <div class="card-header">
+      <img class="account-image rounded-circle" src="{{post.author.profile.url}}" alt="image" width="40" height="40"><strong>{{post.author}}</strong>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{post.body}}</p>
+    </div>
+    <div class="card-footer text-muted">
+      {{post.created}}
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+
+
+
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% endblock %}
 {% endblock %}
