@@ -121,4 +121,4 @@ def updateProfile(request):
             return redirect('profile')
     
     context = {'profile':profile,'form':form}
-    return render(request,'profile.html',context)
+    return render(request,'update.html',context)
