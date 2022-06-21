@@ -9,3 +9,15 @@ body{
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
+.form{
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.inputBx{
+    margin-bottom: 20px;
+}
