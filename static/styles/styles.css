@@ -2,8 +2,8 @@
     min-height: 100vh;
     height: 100%;
 }
-body{
-    background-color: #f2f2f2;
+.main{
+    background-color: #1f1d56;
 }
 .home-container{
     display: grid;
@@ -27,4 +27,27 @@ body{
     padding: 40px;
     width: 900px ;
     border-radius: 10px;
+}
+h1{
+    color:antiquewhite;
+}
+.inputBx{
+    margin-bottom: 20px;
+}
+label{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #111;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+input{
+    width: 100%;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #607d8b;
+    border-radius: 30px;
 }

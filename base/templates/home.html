@@ -3,12 +3,15 @@
     <div class="home-container">
       <div class="side">
         <br>
-        <h3>Locations</h3>
+        <h3 style="color:antiquewhite;">Locations</h3>
         <div class="shadow p-3 mb-5 bg-body rounded">
+          <a class="btn btn-outline-dark" href="{% url 'home' %}">All</a>
+          <br>
+          <br>
         {% for hood in hood %}
-            <ul>
-              <li><a href="{% url 'home' %}?q={{hood.name}}">{{hood.name}}</a></li>
-            </ul>
+        <a class="btn btn-outline-dark" href="{% url 'home' %}?q={{hood.name}}">{{hood.name}}</a>
+        <br>
+        <br>
         {% endfor %}
         </div>
       </div>
