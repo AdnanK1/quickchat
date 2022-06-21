@@ -21,3 +21,10 @@ body{
 .inputBx{
     margin-bottom: 20px;
 }
+.card{
+    display:flex;
+    align-items: center;
+    padding: 40px;
+    width: 900px ;
+    border-radius: 10px;
+}

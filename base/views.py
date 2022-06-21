@@ -112,6 +112,7 @@ def profilePage(request):
 
 @login_required(login_url='login')
 def business(request):
+    profile = request.user.profile
     form = BusinessEntryForm()
     if request.method == 'POST':
         form = BusinessEntryForm(request.POST,request.FILES)
@@ -123,7 +124,7 @@ def business(request):
             messages.success(request,f'The business has been posted successfully')
             return redirect('home')
 
-    context = {'form':form}
+    context = {'form':form,'profile':profile}
     return render(request,'business.html',context)
 
 @login_required(login_url='login')
