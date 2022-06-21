@@ -8,7 +8,7 @@
         <hr>
         {% for hood in hood %}
             <ul>
-              <li><a href="{% url 'home' %}">{{hood.name}}</a></li>
+              <li><a href="{% url 'home' %}?q={{hood.name}}">{{hood.name}}</a></li>
             </ul>
         {% endfor %}
         </div>

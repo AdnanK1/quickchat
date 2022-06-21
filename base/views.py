@@ -16,11 +16,11 @@ def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     business = Business.objects.filter(
         Q(name__icontains=q) |
-        Q(email__icontains=q)
+        Q(email__icontains=q) |
+        Q(neighbourhood__name__icontains=q)
     )
 
     hood = NeighbourHood.objects.all()
-
 
     context = {'business':business,'hood':hood}
     return render(request,'home.html',context)
