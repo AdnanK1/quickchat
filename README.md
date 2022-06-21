@@ -13,9 +13,12 @@ As a user I would like to:
 
 # Installation process
 Create and activate a virtual environment.
+
 Install the dependencies listed in the requirements.txt.
+
 Create a <code>.env</code> file. This will contain environment variables as listed in the <code>.env</code> file.
 Run <code>pip install -r requirements.txt</code> to install the prerequisites.
+
 Finally, for debugging purposes, launch your app with the <code>MODE='dev'</code> setting.
 
 Type the following command in your terminal to clone this repository locally.
