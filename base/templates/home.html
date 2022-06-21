@@ -1,29 +1,42 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <div class="container">
-        <h1>Business Available</h1>
-        {% if business %}
-        {% for business in business%}
+    <div class="home-container">
+      <div class="side">
+        <br>
         <div class="shadow p-3 mb-5 bg-body rounded">
-            <div class="card-body">
-                <p class='card-text'>{{business.name}} -- <img class="account-image rounded-circle" src="{{business.client.profile.url}}" alt="image" width="35" height="32"> {{business.client}}</p>
-                <p class="card-text">{{business.email}}</p>
-                <p class="card-text">{{business.neighbourhood}}</p>
-                <p class="card-text"><small>{{business.created}}</small></p>
-            </div>
-        </div>
+          <h3>Locations</h3>
+        <hr>
+        {% for hood in hood %}
+            <ul>
+              <li><a href="{% url 'home' %}">{{hood.name}}</a></li>
+            </ul>
         {% endfor %}
-        {% else %}
-        <div class="shadow p-3 mb-5 bg-body rounded">
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p class="text-center" style="color: #000;"><i class="fa-light fa-face-disappointed"></i> Sorry there are no businesses are available</p>
-              </blockquote>
-            </div>
+        </div>
+      </div>
+      <div class="container">
+          <h1>Business Available</h1>
+          {% if business %}
+          {% for business in business%}
+          <div class="shadow p-3 mb-5 bg-body rounded">
+              <div class="card-body">
+                  <p class='card-text'><img class="account-image rounded-circle" src="{{business.client.profile.url}}" alt="image" width="40" height="40"> {{business.client}} -- {{business.name}}</p>
+                  <p class="card-text text-center">{{business.email}}</p>
+                  <p class="card-text text-center">{{business.neighbourhood}}</p>
+                  <p class="card-text text-center"><small>{{business.created}}</small></p>
+              </div>
           </div>
-        {% endif %}
+          {% endfor %}
+          {% else %}
+          <div class="shadow p-3 mb-5 bg-body rounded">
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p class="text-center" style="color: #000;"><i class="fa-light fa-face-disappointed"></i> Sorry there are no businesses are available</p>
+                </blockquote>
+              </div>
+            </div>
+          {% endif %}
+      </div>
+      
     </div>
-    
 
 {% endblock %}
