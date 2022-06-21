@@ -22,7 +22,7 @@ Run <code>pip install -r requirements.txt</code> to install the prerequisites.
 Finally, for debugging purposes, launch your app with the <code>MODE='dev'</code> setting.
 
 Type the following command in your terminal to clone this repository locally.
->​git clone https://github.com/AdnanK1/youraward.git
+>​git clone https://github.com/AdnanK1/quickchat.git
 
 On running the commands successfully, you should have a local version of this repository.
 Using your preferred IDE, navigate to the target directory and open it:
