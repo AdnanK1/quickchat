@@ -11,6 +11,9 @@ class NeighbourHood(models.Model):
     def __str__(self):
         return str(self.name)
 
+    def save_neighborhood(self):
+        self.save()
+
 class Client(models.Model):
     profile = CloudinaryField('image',null=True)
     user = models.OneToOneField(User,null=True,on_delete=models.CASCADE,related_name='profile')
@@ -20,6 +23,10 @@ class Client(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def save_client(self):
+        return self.save()
+    
 
 class Post(models.Model):
     author = models.ForeignKey(Client,on_delete=models.SET_NULL, null=True)
@@ -31,6 +38,11 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created']
+
+    def save_post(self):
+        self.save()
+
+    
 
 
 class Business(models.Model):
