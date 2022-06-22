@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
-from .email import send_welcome_email
+#from .email import send_welcome_email
 from .models import Business,Post,NeighbourHood
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit  import CreateView
@@ -54,7 +54,7 @@ def registerPage(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            send_welcome_email(username,email)
+            #send_welcome_email(username,email)
             user = form.save()
             login(request,user,backend = 'django.contrib.auth.backends.ModelBackend')
             messages.success(request,f'Hello {username} you have been logged and a welcome email has been sent')
