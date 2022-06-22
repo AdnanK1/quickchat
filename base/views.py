@@ -54,7 +54,7 @@ def registerPage(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            send_welcome_email(username,email)
+            #send_welcome_email(username,email)
             user = form.save()
             login(request,user,backend = 'django.contrib.auth.backends.ModelBackend')
             messages.success(request,f'Hello {username} you have been logged and a welcome email has been sent')
