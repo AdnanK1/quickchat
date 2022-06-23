@@ -32,6 +32,10 @@ Using your preferred IDE, navigate to the target directory and open it:
 * To navigate to a local browser, Type this on a preferred browser:
 > 127.0.0.1:8000
 
+# Admin Dashboard
+To access the Django Admin Dashboard :
+The name used is adnan and the password is adnank720
+
 # Technologies used
 * Django
 * Python
